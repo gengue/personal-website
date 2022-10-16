@@ -195,8 +195,8 @@ const Home: NextPage = () => {
             <Box
               {...getCornerStyles(
                 {
-                  bg: theme.colors.cyberpunk[100],
-                  border: `3px solid black`,
+                  bg: "black",
+                  border: `2px solid white`,
                 },
                 "bottom"
               )}
