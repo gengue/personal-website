@@ -25,9 +25,9 @@ const AboutMe = () => {
       </Heading>
       <Stack spacing={5} fontSize="lg">
         <Text>
-          Genesis Guerrero Martínez was born in 1993 in Santa Marta, Colombia.
-          Since 2014 I have developed many types of web applications and
-          building tools to help businesses grow.
+          Genesis Guerrero Martínez was born in Santa Marta, Colombia. Since
+          2014 I have developed many types of web applications and building
+          tools to help businesses grow.
         </Text>
         <Text>
           I share my experience in web development, frontend research, open
@@ -38,7 +38,16 @@ const AboutMe = () => {
           It's my pleasure to have been named a Python Ambassador in Colombia
           and participated as speaker in the NodeJS school day.
         </Text>
-        <Text>Currently, I am a Software Architect at Ventura TRAVEL.</Text>
+        <Text>
+          Currently, I am a Software Architect at{" "}
+          <Link
+            href="https://www.venturatravel.org/"
+            isExternal
+            color="cyberpunk.500"
+          >
+            Ventura TRAVEL.
+          </Link>
+        </Text>
       </Stack>
     </Section>
   );
