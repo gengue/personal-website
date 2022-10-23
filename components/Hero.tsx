@@ -49,21 +49,17 @@ const Hero = () => {
           justifyItems="center"
           alignItems="center"
         >
-          <Box
-            height="200px"
+          <Image
+            src="/me.jpeg"
+            alt="Genesis Guerreros's picture"
+            height="500px"
             width="500px"
-            border="3px solid black"
-            position="relative"
-          >
-            <Image
-              src="/me.jpeg"
-              alt="Genesis Guerreros's picture"
-              layout="fill"
-              objectFit="cover"
-              objectPosition="center"
-            />
-            <Corners />
-          </Box>
+            objectFit="cover"
+            objectPosition="center"
+            style={{
+              borderRadius: "50%",
+            }}
+          />
           <Box m={6}>
             <Heading as="h1" size="4xl" mb={2}>
               Hi, I'm Genesis

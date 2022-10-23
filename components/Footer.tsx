@@ -20,18 +20,18 @@ const Footer = () => {
       >
         <Text mr={4}>Find me on</Text>
         <HStack spacing={6} fontSize="4xl">
-          <Link>
+          <Link href="https://twitter.com/geneguer" isExternal>
             <AiOutlineTwitter />
           </Link>
-          <Link>
+          <Link href="https://www.linkedin.com/in/genesis-guerrero/" isExternal>
             <AiFillLinkedin />
           </Link>
 
-          <Link>
+          <Link href="https://github.com/gengue" isExternal>
             <AiOutlineGithub />
           </Link>
 
-          <Link>
+          <Link href="https://www.instagram.com/genesis.codes/ isExternal">
             <AiOutlineInstagram />
           </Link>
         </HStack>
