@@ -156,6 +156,7 @@ const MetaData = () => {
         name="google-site-verification"
         content="OFQHcTJEaaf4sDj5EfqvwdlH3542ks9AZARNQ_KIzMY"
       />
+      <meta name="theme-color" content="#fcee09" />
     </>
   );
 };
