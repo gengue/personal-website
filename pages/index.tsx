@@ -98,7 +98,7 @@ const RandomFacts = () => {
         <ListItem>I'm into rock and metal music</ListItem>
         <ListItem>I love craft beer, especially IPAs</ListItem>
         <ListItem>Play the bass guitar is my zen time</ListItem>
-        <ListItem>I'm sListItemghtly addicted to Call of Duty: Mobile</ListItem>
+        <ListItem>I'm addicted to Soulsborne and FPS games</ListItem>
         <ListItem>I'm currently learning Web3 and Golang</ListItem>
         <ListItem>I like anime, Berserk is my favorite</ListItem>
         <ListItem>I am open to participate in early-stage startups</ListItem>
@@ -110,8 +110,17 @@ const RandomFacts = () => {
             color="cyberpunk.500"
           >
             dotfiles
+          </Link>{" "}
+          (New version{" "}
+          <Link
+            href="https://github.com/gengue/astrovim"
+            isExternal
+            color="cyberpunk.500"
+          >
+            {" "}
+            here{" "}
           </Link>
-          .
+          ) .
         </ListItem>
       </UnorderedList>
     </Section>
@@ -199,7 +208,7 @@ const Home: NextPage = () => {
                   bg: "black",
                   border: `2px solid white`,
                 },
-                "bottom"
+                "bottom",
               )}
               style={{ position: "absolute" }}
             />
