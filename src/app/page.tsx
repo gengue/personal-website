@@ -14,12 +14,16 @@ import {
 	Twitter,
 } from "lucide-react";
 import { Rubik_Mono_One } from "next/font/google";
-import { Metadata } from "next";
+import { Metadata, Viewport } from "next";
 
 const rubikMono = Rubik_Mono_One({
 	weight: "400",
 	subsets: ["latin"],
 });
+
+export const viewport: Viewport = {
+	themeColor: "#00dbee",
+};
 
 export const metadata: Metadata = {
 	title: "Genesis Guerrero",
@@ -33,10 +37,6 @@ export const metadata: Metadata = {
 			"Genesis Guerrero Martinez is a Software Engineer & Open Source enthusiast based in Norway, with rock-solid experience in building complex applications with modern technologies",
 		type: "article",
 	},
-	icons: {
-		icon: "/favicon.ico",
-	},
-	themeColor: "#00dbee",
 	verification: {
 		google: "OFQHcTJEaaf4sDj5EfqvwdlH3542ks9AZARNQ_KIzMY",
 	},
