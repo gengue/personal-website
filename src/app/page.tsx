@@ -43,7 +43,7 @@ export const metadata: Metadata = {
 };
 
 const yearsOfExp = new Date().getFullYear() - 2014;
-const currentTitle = "the head of Intrastructure";
+const currentTitle = "Software Engineer";
 const currentCompany = "Ventura TRAVEL";
 
 export default function Page() {
@@ -104,7 +104,7 @@ export default function Page() {
 								Colombia and participated as speaker in the NodeJS school day.
 							</p>
 							<p>
-								Currently, I am {currentTitle} at {currentCompany}.
+								Currently, I am working as {currentTitle} at {currentCompany}.
 							</p>
 						</div>
 						<div className="grid grid-cols-1 md:grid-cols-2 gap-8">
