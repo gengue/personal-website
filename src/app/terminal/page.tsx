@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
+import { ThemeSwitcher } from "@/components/theme-switcher";
 
 interface CommandHistoryEntry {
 	command: string;
@@ -30,15 +31,18 @@ export default function Terminal() {
 			title: "~/home",
 			content: (
 				<div>
-					<pre className="text-primary text-xs sm:text-sm terminal-glow">{asciiArt}</pre>
-					<div className="mt-4">
-						<p className="text-primary terminal-glow">
+					<pre className="text-primary text-[0.5rem] xs:text-[0.6rem] sm:text-xs md:text-sm terminal-glow overflow-x-auto whitespace-pre-wrap break-all sm:break-normal">{asciiArt}</pre>
+					<div className="mt-3 sm:mt-4">
+						<p className="text-primary terminal-glow text-sm sm:text-base">
 							Welcome to Genesis Guerrero's terminal
 						</p>
-						<p className="text-muted-foreground mt-2">
-							Software Engineer | Infrastructure Team Lead | Vim User
+						<p className="text-xs sm:text-sm mb-4">
+							A quirky code alchemist building playful things in the cloud
 						</p>
-						<p className="text-muted-foreground mt-4">
+						<p className="text-muted-foreground text-xs sm:text-sm">
+							Terminal Whisperer | Automation Addict | Neovim Nerd | Opinionated
+						</p>
+						<p className="text-muted-foreground mt-3 sm:mt-4 text-xs sm:text-sm">
 							Type 'help' to see available commands
 						</p>
 					</div>
@@ -63,11 +67,12 @@ export default function Terminal() {
 							Since 2014, I've developed many types of web applications and
 							built tools to help businesses grow.
 						</p>
-						<p className="mt-2">
-							NodeJS School Day Speaker | Python Ambassador in Colombia
+						<p className="mt-2 text-accent">
+							NodeJS School Day Speaker | Python Ambassador in Colombia ~
 						</p>
-						<p className="mt-2">
-							Terminal enthusiast | TUI applications lover
+						<p className="mt-2 text-accent">
+							TUI applications lover | AI Agent Adventurer | Refactor
+							Renegade | Automation Aficionado
 						</p>
 					</div>
 				</div>
@@ -140,6 +145,7 @@ export default function Terminal() {
 						<p>{"{"}</p>
 						<p>  "twitter": "@geneguer",</p>
 						<p>  "github":  "github.com/genesisguerrero",</p>
+						<p>  "linkedin": "linkedin.com/in/genesis-guerrero",</p>
 						<p>  "website": "genesisguerrero.com"</p>
 						<p>{"}"}</p>
 					</div>
@@ -258,30 +264,32 @@ export default function Terminal() {
 	}, []);
 
 	return (
-		<div className="min-h-screen bg-background text-foreground font-mono p-4">
+		<div className="min-h-screen bg-background text-foreground font-mono p-2 sm:p-4">
 			<div className="max-w-4xl mx-auto">
-				<div className="mb-4 text-right">
+				<div className="mb-3 sm:mb-4 flex justify-between items-center">
 					<Link 
 						href="/" 
-						className="text-primary hover:text-primary/80 transition-colors text-sm"
+						className="text-primary hover:text-primary/80 transition-colors text-xs sm:text-sm"
 					>
 						← Back to normie mode
 					</Link>
+					<ThemeSwitcher />
 				</div>
 				
-				<div className="border border-border rounded-lg p-4 h-[85vh] flex flex-col">
-					<div className="flex items-center mb-4 pb-2 border-b border-border">
-						<div className="flex space-x-2">
-							<div className="w-3 h-3 rounded-full bg-red-500"></div>
-							<div className="w-3 h-3 rounded-full bg-yellow-500"></div>
-							<div className="w-3 h-3 rounded-full bg-green-500"></div>
+				<div className="border border-border rounded-lg p-2 sm:p-4 h-[80vh] sm:h-[85vh] flex flex-col">
+					<div className="flex items-center mb-3 sm:mb-4 pb-2 border-b border-border">
+						<div className="flex space-x-1 sm:space-x-2">
+							<div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-red-500"></div>
+							<div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-yellow-500"></div>
+							<div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-green-500"></div>
 						</div>
-						<div className="ml-4 text-muted-foreground">
-							genesis@terminal {sections[currentSection].title}
+						<div className="ml-2 sm:ml-4 text-muted-foreground text-xs sm:text-sm">
+							<span className="hidden xs:inline">genesis@terminal {sections[currentSection].title}</span>
+							<span className="xs:hidden">{sections[currentSection].title}</span>
 						</div>
 					</div>
 
-					<div ref={terminalRef} className="flex-1 overflow-y-auto mb-4">
+					<div ref={terminalRef} className="flex-1 overflow-y-auto mb-3 sm:mb-4">
 						{currentSection === "home" &&
 							commandHistory.length === 0 &&
 							sections.home.content}
@@ -289,11 +297,11 @@ export default function Terminal() {
 						{commandHistory.map((entry, index) => (
 							<div key={index} className="mb-2">
 								<div className="flex items-start">
-									<span className="text-primary mr-2">$</span>
-									<span className="text-foreground">{entry.command}</span>
+									<span className="text-primary mr-1 sm:mr-2 text-xs sm:text-sm">$</span>
+									<span className="text-foreground text-xs sm:text-sm break-all">{entry.command}</span>
 								</div>
 								{entry.output && (
-									<div className="mt-1 ml-4">{entry.output}</div>
+									<div className="mt-1 ml-3 sm:ml-4 text-xs sm:text-sm">{entry.output}</div>
 								)}
 							</div>
 						))}
@@ -302,7 +310,7 @@ export default function Terminal() {
 					</div>
 
 					<div className="flex items-center">
-						<span className="text-primary mr-2">$</span>
+						<span className="text-primary mr-1 sm:mr-2 text-xs sm:text-sm">$</span>
 						<div className="flex-1 relative">
 							<input
 								ref={inputRef}
@@ -327,17 +335,18 @@ export default function Terminal() {
 								autoComplete="off"
 								spellCheck="false"
 							/>
-							<span className="text-foreground pointer-events-none">
+							<span className="text-foreground pointer-events-none text-xs sm:text-sm">
 								{currentCommand ? (
 									<>
-										{currentCommand}
+										<span className="break-all">{currentCommand}</span>
 										<span className="animate-pulse">█</span>
 									</>
 								) : (
 									<>
 										<span className="animate-pulse">█</span>
 										<span className="text-muted-foreground ml-1">
-											Type 'help' for commands...
+											<span className="hidden sm:inline">Type 'help' for commands...</span>
+											<span className="sm:hidden">'help' for commands...</span>
 										</span>
 									</>
 								)}
@@ -346,7 +355,7 @@ export default function Terminal() {
 					</div>
 				</div>
 
-				<div className="mt-4 text-center text-muted-foreground text-sm">
+				<div className="mt-3 sm:mt-4 text-center text-muted-foreground text-xs sm:text-sm">
 					<p>Terminal Portfolio v1.0.0</p>
 				</div>
 			</div>
