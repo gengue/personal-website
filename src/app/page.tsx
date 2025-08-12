@@ -46,11 +46,11 @@ export default function Home() {
 				<div className="mb-6 sm:mb-8 border border-border rounded-lg p-3 sm:p-6 bg-card">
 					<div className="flex items-center gap-4 sm:gap-8">
 						<div className="flex-1 min-w-0">
-							<pre className="text-primary text-[0.5rem] xs:text-[0.6rem] sm:text-xs md:text-sm overflow-x-auto terminal-glow whitespace-pre-wrap break-all sm:break-normal">
+							<pre className="text-primary text-[0.35rem] xs:text-[0.5rem] sm:text-xs md:text-sm overflow-x-auto terminal-glow whitespace-pre sm:whitespace-pre-wrap">
 								{asciiArt}
 							</pre>
 						</div>
-						<div className="flex-shrink-0 flex flex-col items-center justify-center">
+						<div className="hidden xs:flex flex-shrink-0 flex-col items-center justify-center">
 							<div className="mb-1">
 								<p className="text-muted-foreground text-xs opacity-75 font-mono">
 									<span className="text-primary">$</span> icat avatar.jpg
