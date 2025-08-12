@@ -1,295 +1,346 @@
-import Image from "next/image";
-import { Badge } from "@/components/ui/badge";
-import {
-	Coffee,
-	Gamepad2,
-	Beer,
-	Music2,
-	BookOpen,
-	Code2,
-	Rocket,
-	Linkedin,
-	Github,
-	Instagram,
-	Twitter,
-} from "lucide-react";
-import { Rubik_Mono_One } from "next/font/google";
-import { Metadata, Viewport } from "next";
+"use client";
+import React, { useState, useEffect, useRef } from "react";
 
-const rubikMono = Rubik_Mono_One({
-	weight: "400",
-	subsets: ["latin"],
-});
+interface CommandHistoryEntry {
+	command: string;
+	output: React.ReactNode;
+	timestamp: Date;
+}
 
-export const viewport: Viewport = {
-	themeColor: "#00dbee",
-};
+type SectionKey = "home" | "about" | "work" | "skills" | "interests" | "contact";
 
-export const metadata: Metadata = {
-	title: "Genesis Guerrero",
-	description:
-		"Genesis Guerrero Martinez is a Software Engineer & Open Source enthusiast based in Norway, with rock-solid experience in building complex applications with modern technologies",
-	keywords:
-		"Genesis Alberto Guerrero Martinez,Santa Marta,Colombia,Software Developer,programmer,Norway,Web Developer, beer",
-	openGraph: {
-		title: "Genesis Guerrero Martinez",
-		description:
-			"Genesis Guerrero Martinez is a Software Engineer & Open Source enthusiast based in Norway, with rock-solid experience in building complex applications with modern technologies",
-		type: "article",
-	},
-	verification: {
-		google: "OFQHcTJEaaf4sDj5EfqvwdlH3542ks9AZARNQ_KIzMY",
-	},
-};
+export default function Home() {
+	const [currentSection, setCurrentSection] = useState<SectionKey>("home");
+	const [commandHistory, setCommandHistory] = useState<CommandHistoryEntry[]>([]);
+	const [currentCommand, setCurrentCommand] = useState("");
+	const terminalRef = useRef<HTMLDivElement>(null);
+	const inputRef = useRef<HTMLInputElement>(null);
 
-const yearsOfExp = new Date().getFullYear() - 2014;
-const currentTitle = "Software Engineer";
-const currentCompany = "Ventura TRAVEL";
+	const asciiArt = `
+   _____ ______ _   _ ______  _____ _____  _____ 
+  / ____|  ____| \\ | |  ____|/ ____|_   _|/ ____|
+ | |  __| |__  |  \\| | |__  | (___   | | | (___  
+ | | |_ |  __| | . \` |  __|  \\___ \\  | |  \\___ \\ 
+ | |__| | |____| |\\  | |____ ____) |_| |_ ____) |
+  \\_____|______|_| \\_|______|_____/|_____|_____/ `;
 
-export default function Page() {
-	return (
-		<div className="min-h-screen bg-black text-white">
-			{/* Hero Section */}
-			<section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-				<div className="absolute inset-0 bg-gradient-to-b from-[#00dbee]/20 to-black/95" />
-				<div className="container relative px-4 py-32 mx-auto">
-					<div className="grid lg:grid-cols-2 gap-12 items-center">
-						<div className="space-y-8 text-center lg:text-start order-2 lg:order-1">
-							<h1
-								className={`${rubikMono.className} text-6xl md:text-7xl lg:text-8xl font-bold tracking-tighter`}
-							>
-								I'm <span className="text-[#00dbee]">Genesis</span>
-							</h1>
-							<p className="text-xl md:text-2xl text-gray-300 max-w-2xl">
-								A Software Engineer with rock-solid experience in building
-								complex web applications{" "}
-							</p>
-						</div>
-						<div className="relative aspect-square mx-auto order-1 lg:order-2">
-							<Image
-								src="/me2.jpg"
-								alt="Genesis Guerrero - Software Engineer"
-								height={400}
-								width={400}
-								className="object-cover rounded-full w-[300px] h-[300px] md:w-[500px] md:h-[500px]"
-								priority
-							/>
-						</div>
+	const sections = {
+		home: {
+			title: "~/home",
+			content: (
+				<div>
+					<pre className="text-green-400 text-xs sm:text-sm">{asciiArt}</pre>
+					<div className="mt-4">
+						<p className="text-green-400">
+							Welcome to Genesis Guerrero's terminal
+						</p>
+						<p className="text-gray-400 mt-2">
+							Software Engineer | Infrastructure Team Lead | Vim User
+						</p>
+						<p className="text-gray-500 mt-4">
+							Type 'help' to see available commands
+						</p>
 					</div>
 				</div>
-			</section>
-
-			{/* About Section */}
-			<section className="py-32 bg-black">
-				<div className="container px-4 mx-auto">
-					<h2
-						className={`${rubikMono.className} text-5xl md:text-6xl font-bold mb-16`}
-					>
-						About me
-					</h2>
-					<div className="grid lg:grid-cols-2 gap-16">
-						<div className="space-y-6 text-lg text-gray-300">
-							<p>
-								Genesis Guerrero Martínez was born in Santa Marta, Colombia.
-								Since 2014 I have developed many types of web applications and
-								building tools to help businesses grow.
-							</p>
-							<p>
-								I share my experience in web development, frontend research,
-								open source and developer lifestyle on Twitter (I refuse to call
-								it X).
-							</p>
-							<p>
-								It's my pleasure to have been named a Python Ambassador in
-								Colombia and participated as speaker in the NodeJS school day.
-							</p>
-							<p>
-								Currently, I am working as {currentTitle} at {currentCompany}.
-							</p>
-						</div>
-						<div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-							<div className="p-6 bg-white/5 rounded-xl">
-								<h3 className="text-[#00dbee] text-xl font-semibold mb-2">
-									{yearsOfExp}+ years of experience
-								</h3>
-								<p className="text-gray-400">Software Development</p>
-							</div>
-							<div className="p-6 bg-white/5 rounded-xl">
-								<h3 className="text-[#00dbee] text-xl font-semibold mb-2">
-									IT consultant
-								</h3>
-								<p className="text-gray-400">Enterprise Solutions</p>
-							</div>
-							<div className="p-6 bg-white/5 rounded-xl">
-								<h3 className="text-[#00dbee] text-xl font-semibold mb-2">
-									Performance
-								</h3>
-								<p className="text-gray-400">Engineering Excellence</p>
-							</div>
-						</div>
+			),
+		},
+		about: {
+			title: "~/about",
+			content: (
+				<div>
+					<p className="text-green-400 mb-2">&gt; cat about.txt</p>
+					<div className="text-gray-300 pl-2">
+						<p>Name: Genesis Guerrero Martínez</p>
+						<p>Location: Oslo, Norway</p>
+						<p>Origin: Santa Marta, Colombia</p>
+						<p>Languages: Spanish (native), English, Norwegian (learning)</p>
+						<p className="mt-2">
+							A Software Engineer with rock-solid experience in building complex
+							web applications.
+						</p>
+						<p>
+							Since 2014, I've developed many types of web applications and
+							built tools to help businesses grow.
+						</p>
+						<p className="mt-2">
+							NodeJS School Day Speaker | Python Ambassador in Colombia
+						</p>
+						<p className="mt-2">
+							Terminal enthusiast | TUI applications lover
+						</p>
 					</div>
 				</div>
-			</section>
-
-			{/* Skills Section */}
-			<section className="py-32 bg-black/50">
-				<div className="container px-4 mx-auto">
-					<h2
-						className={`${rubikMono.className} text-5xl md:text-6xl font-bold mb-8`}
-					>
-						What I can do
-					</h2>
-					<p className="text-xl text-gray-300 mb-16 max-w-3xl">
-						A freelance software engineer specialized in both front-end and
-						back-end web development with solid experience in building scalable
-						products. I can bring your ideas to life with code or help you to
-						improve your existing product.
+			),
+		},
+		work: {
+			title: "~/work",
+			content: (
+				<div>
+					<p className="text-green-400 mb-2">&gt; ./current_job.sh</p>
+					<div className="text-gray-300 pl-2">
+						<p className="text-amber-400">Currently @ Ventura TRAVEL</p>
+						<p>Position: Software Engineer | Infrastructure Team Manager</p>
+						<p className="mt-2 text-gray-400">
+							Experience: 11 years in software development
+						</p>
+					</div>
+				</div>
+			),
+		},
+		skills: {
+			title: "~/skills",
+			content: (
+				<div>
+					<p className="text-green-400 mb-2">&gt; ls -la /usr/bin/skills/</p>
+					<div className="text-gray-300 pl-2">
+						<p className="text-amber-400">Expert:</p>
+						<p>├── Web development</p>
+						<p>├── TypeScript</p>
+						<p>├── React</p>
+						<p>└── Node.js</p>
+						<p className="mt-2 text-amber-400">Proficient:</p>
+						<p>├── k8s, GCP, argoCD, gitlab-CI</p>
+						<p>├── Python</p>
+						<p>├── Golang</p>
+						<p>└── PHP</p>
+						<p className="mt-2 text-amber-400">Currently working:</p>
+						<p>└── AI-based applications</p>
+					</div>
+				</div>
+			),
+		},
+		interests: {
+			title: "~/interests",
+			content: (
+				<div>
+					<p className="text-green-400 mb-2">
+						&gt; grep -r "hobbies" ~/personal/
 					</p>
-					<div className="flex flex-wrap gap-3">
-						{[
-							"NodeJS",
-							"TypeScript",
-							"NextJS",
-							"ReactJS",
-							"Postgres",
-							"Python",
-							"Django",
-							"FastAPI",
-							"PWA",
-							"AWS",
-							"GCP",
-							"Golang",
-							"Hasura",
-							"GraphQL",
-							"K8s",
-						].map((skill) => (
-							<Badge
-								key={skill}
-								variant="secondary"
-								className="text-[#00dbee] bg-[#00dbee]/10 hover:bg-[#00dbee]/20 px-4 py-2 text-lg"
-							>
-								#{skill}
-							</Badge>
+					<div className="text-gray-300 pl-2">
+						<p>☕ I drink a lot of coffee</p>
+						<p>🎸 Rock and metal music enthusiast</p>
+						<p>🍺 Craft beer lover</p>
+						<p>🎵 Bass guitar player (my zen time)</p>
+						<p>🎮 Souls-like and JRPG games addict</p>
+						<p>📺 Anime/manga fan (Berserk is my favorite)</p>
+						<p>🥾 Hiking with my beautiful wife</p>
+						<p>🚀 Open to early-stage startups</p>
+						<p>⌨ And... I use vim BTW (<span className="text-cyan-400">github.com/gengue/dotfiles</span>)</p>
+					</div>
+				</div>
+			),
+		},
+		contact: {
+			title: "~/contact",
+			content: (
+				<div>
+					<p className="text-green-400 mb-2">&gt; cat contact.json</p>
+					<div className="text-gray-300 pl-2">
+						<p>{"{"}</p>
+						<p>  "twitter": "@geneguer",</p>
+						<p>  "github":  "github.com/genesisguerrero",</p>
+						<p>  "website": "genesisguerrero.com"</p>
+						<p>{"}"}</p>
+					</div>
+				</div>
+			),
+		},
+	} as const;
+
+	const commands = {
+		help: () => ({
+			output: (
+				<div className="text-gray-300">
+					<p className="text-green-400 mb-2">Available commands:</p>
+					<p> about - About me</p>
+					<p> work - Current position and experience</p>
+					<p> skills - Technical skills</p>
+					<p> interests - Personal interests</p>
+					<p> contact - Contact information</p>
+					<p> clear - Clear terminal</p>
+					<p> home - Return to home</p>
+				</div>
+			),
+		}),
+		about: () => ({ section: "about" }),
+		work: () => ({ section: "work" }),
+		skills: () => ({ section: "skills" }),
+		interests: () => ({ section: "interests" }),
+		contact: () => ({ section: "contact" }),
+		home: () => ({ section: "home" }),
+		clear: () => ({ clear: true }),
+		"": () => ({ output: null }),
+	} as const;
+
+	const availableCommands = [
+		"help",
+		"about",
+		"work",
+		"skills",
+		"interests",
+		"contact",
+		"home",
+		"clear",
+	];
+
+	const handleTabComplete = (currentInput: string) => {
+		const input = currentInput.trim().toLowerCase();
+		if (!input) return currentInput;
+
+		const matches = availableCommands.filter((cmd) =>
+			cmd.startsWith(input)
+		);
+
+		if (matches.length === 1) {
+			return matches[0];
+		} else if (matches.length > 1) {
+			// Find common prefix of all matches
+			let commonPrefix = matches[0];
+			for (let i = 1; i < matches.length; i++) {
+				let j = 0;
+				while (
+					j < commonPrefix.length &&
+					j < matches[i].length &&
+					commonPrefix[j] === matches[i][j]
+				) {
+					j++;
+				}
+				commonPrefix = commonPrefix.substring(0, j);
+			}
+			return commonPrefix.length > input.length ? commonPrefix : currentInput;
+		}
+
+		return currentInput;
+	};
+
+	const handleCommand = (cmd: string) => {
+		const trimmedCmd = cmd.trim().toLowerCase() as keyof typeof commands;
+		const commandFunc =
+			commands[trimmedCmd] ||
+			(() => ({
+				output: (
+					<p className="text-red-400">
+						Command not found: {trimmedCmd}. Type 'help' for available commands.
+					</p>
+				),
+			}));
+
+		const result = commandFunc();
+
+		if ('clear' in result && result.clear) {
+			setCommandHistory([]);
+			setCurrentSection("home");
+		} else {
+			const newEntry = {
+				command: cmd,
+				output: 'output' in result ? result.output : null,
+				timestamp: new Date(),
+			};
+
+			setCommandHistory((prev) => [...prev, newEntry]);
+
+			if ('section' in result && result.section) {
+				setCurrentSection(result.section as SectionKey);
+			}
+		}
+	};
+
+	useEffect(() => {
+		if (terminalRef.current) {
+			terminalRef.current.scrollTop = terminalRef.current.scrollHeight;
+		}
+	}, [commandHistory, currentSection]);
+
+	useEffect(() => {
+		if (inputRef.current) {
+			inputRef.current.focus();
+		}
+	}, []);
+
+	return (
+		<div className="min-h-screen bg-black text-green-400 font-mono p-4">
+			<div className="max-w-4xl mx-auto">
+				<div className="border border-green-400 rounded-lg p-4 h-[85vh] flex flex-col">
+					<div className="flex items-center mb-4 pb-2 border-b border-green-400">
+						<div className="flex space-x-2">
+							<div className="w-3 h-3 rounded-full bg-red-500"></div>
+							<div className="w-3 h-3 rounded-full bg-yellow-500"></div>
+							<div className="w-3 h-3 rounded-full bg-green-500"></div>
+						</div>
+						<div className="ml-4 text-gray-400">
+							genesis@terminal {sections[currentSection].title}
+						</div>
+					</div>
+
+					<div ref={terminalRef} className="flex-1 overflow-y-auto mb-4">
+						{currentSection === "home" &&
+							commandHistory.length === 0 &&
+							sections.home.content}
+
+						{commandHistory.map((entry, index) => (
+							<div key={index} className="mb-2">
+								<div className="flex items-start">
+									<span className="text-green-400 mr-2">$</span>
+									<span className="text-gray-300">{entry.command}</span>
+								</div>
+								{entry.output && (
+									<div className="mt-1 ml-4">{entry.output}</div>
+								)}
+							</div>
 						))}
+
+						{currentSection !== "home" && sections[currentSection].content}
+					</div>
+
+					<div className="flex items-center">
+						<span className="text-green-400 mr-2">$</span>
+						<div className="flex-1 relative">
+							<input
+								ref={inputRef}
+								type="text"
+								value={currentCommand}
+								onChange={(e) => setCurrentCommand(e.target.value)}
+								onKeyDown={(e) => {
+									if (e.key === "Tab") {
+										e.preventDefault();
+										const completed = handleTabComplete(currentCommand);
+										setCurrentCommand(completed);
+									} else if (e.key === "Enter") {
+										e.preventDefault();
+										if (currentCommand.trim()) {
+											handleCommand(currentCommand);
+											setCurrentCommand("");
+										}
+									}
+								}}
+								className="absolute inset-0 bg-transparent outline-none text-transparent caret-transparent"
+								placeholder=""
+								autoComplete="off"
+								spellCheck="false"
+							/>
+							<span className="text-gray-300 pointer-events-none">
+								{currentCommand ? (
+									<>
+										{currentCommand}
+										<span className="animate-pulse">█</span>
+									</>
+								) : (
+									<>
+										<span className="animate-pulse">█</span>
+										<span className="text-gray-500 ml-1">
+											Type 'help' for commands...
+										</span>
+									</>
+								)}
+							</span>
+						</div>
 					</div>
 				</div>
-			</section>
 
-			{/* Random Facts Section */}
-			<section className="py-24 bg-black">
-				<div className="container px-4 mx-auto">
-					<h2
-						className={`${rubikMono.className} text-5xl md:text-6xl font-bold mb-16`}
-					>
-						Some facts
-					</h2>
-					<div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
-						{[
-							{ icon: Coffee, text: "I drink a lot of coffee" },
-							{ icon: Music2, text: "I'm into rock and metal music" },
-							{ icon: Beer, text: "I love craft beer, especially IPAs" },
-							{ icon: Music2, text: "Play the bass guitar is my zen time" },
-							{
-								icon: Gamepad2,
-								text: "I'm addicted to Souls-like and JRPG games",
-							},
-							{
-								icon: Code2,
-								text: "I'm currently learning AI-based applications and Golang",
-							},
-							{
-								icon: BookOpen,
-								text: "I like anime and manga, Berserk is my favorite",
-							},
-							{
-								icon: Rocket,
-								text: "I am open to participate in early-stage startups",
-							},
-						].map((fact, index) => (
-							<div
-								key={index}
-								className="flex items-start space-x-4 p-6 bg-white/5 rounded-xl"
-							>
-								<fact.icon className="w-6 h-6 text-[#00dbee]" />
-								<p className="text-gray-300">{fact.text}</p>
-							</div>
-						))}
-					</div>
-					<p className="text-3xl">And... I use vim BTW</p>
+				<div className="mt-4 text-center text-gray-600 text-sm">
+					<p>Terminal Portfolio v1.0.0</p>
 				</div>
-			</section>
-
-			{/* Socials Section */}
-			<section className="py-32 bg-gradient-to-t from-[#00dbee]/20 to-black">
-				<div className="container px-4 mx-auto">
-					<h2
-						className={`${rubikMono.className} text-5xl md:text-6xl font-bold mb-16`}
-					>
-						Let's Connect
-					</h2>
-					<div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-						<a
-							href="https://twitter.com/geneguer"
-							target="_blank"
-							rel="noopener noreferrer"
-							className="group flex items-center gap-4 p-6 bg-white/5 rounded-xl hover:bg-[#00dbee]/10 transition-all"
-						>
-							<Twitter className="w-8 h-8 text-[#00dbee]" />
-							<div>
-								<p className="font-semibold">Twitter</p>
-								<p className="text-sm text-gray-400 group-hover:text-[#00dbee]">
-									@geneguer
-								</p>
-							</div>
-						</a>
-
-						<a
-							href="https://www.linkedin.com/in/genesis-guerrero/"
-							target="_blank"
-							rel="noopener noreferrer"
-							className="group flex items-center gap-4 p-6 bg-white/5 rounded-xl hover:bg-[#00dbee]/10 transition-all"
-						>
-							<Linkedin className="w-8 h-8 text-[#00dbee]" />
-							<div>
-								<p className="font-semibold">LinkedIn</p>
-								<p className="text-sm text-gray-400 group-hover:text-[#00dbee]">
-									genesis-guerrero
-								</p>
-							</div>
-						</a>
-
-						<a
-							href="https://github.com/gengue"
-							target="_blank"
-							rel="noopener noreferrer"
-							className="group flex items-center gap-4 p-6 bg-white/5 rounded-xl hover:bg-[#00dbee]/10 transition-all"
-						>
-							<Github className="w-8 h-8 text-[#00dbee]" />
-							<div>
-								<p className="font-semibold">GitHub</p>
-								<p className="text-sm text-gray-400 group-hover:text-[#00dbee]">
-									gengue
-								</p>
-							</div>
-						</a>
-
-						<a
-							href="https://www.instagram.com/genesis.codes/"
-							target="_blank"
-							rel="noopener noreferrer"
-							className="group flex items-center gap-4 p-6 bg-white/5 rounded-xl hover:bg-[#00dbee]/10 transition-all"
-						>
-							<Instagram className="w-8 h-8 text-[#00dbee]" />
-							<div>
-								<p className="font-semibold">Instagram</p>
-								<p className="text-sm text-gray-400 group-hover:text-[#00dbee]">
-									genesis.codes
-								</p>
-							</div>
-						</a>
-					</div>
-				</div>
-			</section>
+			</div>
 		</div>
 	);
 }
