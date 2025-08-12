@@ -157,5 +157,111 @@
     0% { transform: translateY(0); }
     100% { transform: translateY(4px); }
   }
+
+  /* Agnoster-style segments for main website */
+  .agnoster-segment {
+    position: relative;
+    padding: 0.25rem 0.75rem;
+    margin-bottom: 0;
+    display: inline-flex;
+    align-items: center;
+    min-height: 30px;
+    transition: all 0.3s ease;
+    width: fit-content;
+  }
+
+  .agnoster-segment:not(:last-child) {
+    margin-right: 20px;
+  }
+
+  /* Chevron separator using CSS pseudo-element */
+  .agnoster-segment::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: -15px;
+    width: 0;
+    height: 0;
+    border-top: 15px solid transparent;
+    border-bottom: 15px solid transparent;
+    border-left: 15px solid;
+    border-left-color: inherit;
+    transform: translateY(-50%);
+    z-index: 10;
+  }
+
+  .agnoster-segment:last-child::after {
+    display: none;
+  }
+
+  /* Segment variants using theme colors */
+  .agnoster-about {
+    background-color: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+  }
+
+  .agnoster-about::after {
+    border-left-color: hsl(var(--primary));
+  }
+
+  .agnoster-work {
+    background-color: hsl(var(--accent));
+    color: hsl(var(--accent-foreground));
+  }
+
+  .agnoster-work::after {
+    border-left-color: hsl(var(--accent));
+  }
+
+  .agnoster-skills {
+    background-color: hsl(var(--secondary));
+    color: hsl(var(--secondary-foreground));
+  }
+
+  .agnoster-skills::after {
+    border-left-color: hsl(var(--secondary));
+  }
+
+  .agnoster-interests {
+    background-color: hsl(var(--muted));
+    color: hsl(var(--muted-foreground));
+  }
+
+  .agnoster-interests::after {
+    border-left-color: hsl(var(--muted));
+  }
+
+  .agnoster-contact {
+    background-color: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+  }
+
+  .agnoster-contact::after {
+    border-left-color: hsl(var(--primary));
+  }
+
+  /* Responsive adjustments for segments */
+  @media (max-width: 768px) {
+    .agnoster-segment {
+      margin-right: 0;
+      margin-bottom: 1rem;
+      padding: 0.2rem 0.5rem;
+      min-height: 28px;
+    }
+
+    .agnoster-segment::after {
+      display: none;
+    }
+  }
+
+  /* Hover effects for segments */
+  .agnoster-segment:hover {
+    transform: translateX(2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .dark .agnoster-segment:hover {
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.05);
+  }
 }
 

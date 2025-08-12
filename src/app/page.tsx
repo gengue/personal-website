@@ -50,7 +50,12 @@ export default function Home() {
 								{asciiArt}
 							</pre>
 						</div>
-						<div className="flex-shrink-0 flex items-center justify-center">
+						<div className="flex-shrink-0 flex flex-col items-center justify-center">
+							<div className="mb-1">
+								<p className="text-muted-foreground text-xs opacity-75 font-mono">
+									<span className="text-primary">$</span> icat avatar.jpg
+								</p>
+							</div>
 							<Image
 								src="/me-pixel.png"
 								alt="Genesis Guerrero - Pixel Avatar"
@@ -79,10 +84,12 @@ export default function Home() {
 				<div className="space-y-4 sm:space-y-6">
 					{/* About Section */}
 					<section className="border border-border rounded-lg p-3 sm:p-6 bg-card">
-						<h2 className="text-primary text-base sm:text-lg font-semibold mb-3 sm:mb-4 flex items-center">
-							<span className="text-muted-foreground mr-2">$</span>
-							<span className="text-xs sm:text-base">cat about.txt</span>
-						</h2>
+						<div className="agnoster-segment agnoster-about mb-4">
+							<h2 className="font-semibold flex items-center text-sm sm:text-base">
+								<span className="mr-2">$</span>
+								<span>about</span>
+							</h2>
+						</div>
 						<div className="space-y-2 sm:space-y-3 pl-2 sm:pl-4 border-l-2 border-border">
 							<div className="text-xs sm:text-sm text-muted-foreground space-y-1">
 								<p>
@@ -124,10 +131,12 @@ export default function Home() {
 
 					{/* Work Section */}
 					<section className="border border-border rounded-lg p-3 sm:p-6 bg-card">
-						<h2 className="text-primary text-base sm:text-lg font-semibold mb-3 sm:mb-4 flex items-center">
-							<span className="text-muted-foreground mr-2">$</span>
-							<span className="text-xs sm:text-base">./current_job.sh</span>
-						</h2>
+						<div className="agnoster-segment agnoster-work mb-4">
+							<h2 className="font-semibold flex items-center text-sm sm:text-base">
+								<span className="mr-2">$</span>
+								<span>work</span>
+							</h2>
+						</div>
 						<div className="space-y-2 sm:space-y-3 pl-2 sm:pl-4 border-l-2 border-border">
 							<p className="text-primary font-semibold text-sm sm:text-base">
 								Currently @ Ventura TRAVEL
@@ -143,12 +152,12 @@ export default function Home() {
 
 					{/* Skills Section */}
 					<section className="border border-border rounded-lg p-3 sm:p-6 bg-card">
-						<h2 className="text-primary text-base sm:text-lg font-semibold mb-3 sm:mb-4 flex items-center">
-							<span className="text-muted-foreground mr-2">$</span>
-							<span className="text-xs sm:text-base">
-								ls -la /usr/bin/skills/
-							</span>
-						</h2>
+						<div className="agnoster-segment agnoster-skills mb-4">
+							<h2 className="font-semibold flex items-center text-sm sm:text-base">
+								<span className="mr-2">$</span>
+								<span>skills</span>
+							</h2>
+						</div>
 						<div className="space-y-3 sm:space-y-4 pl-2 sm:pl-4 border-l-2 border-border text-xs sm:text-sm">
 							<div>
 								<p className="text-primary font-semibold mb-1 sm:mb-2">
@@ -185,12 +194,12 @@ export default function Home() {
 
 					{/* Interests Section */}
 					<section className="border border-border rounded-lg p-3 sm:p-6 bg-card">
-						<h2 className="text-primary text-base sm:text-lg font-semibold mb-3 sm:mb-4 flex items-center">
-							<span className="text-muted-foreground mr-2">$</span>
-							<span className="text-xs sm:text-base">
-								grep -r "hobbies" ~/personal/
-							</span>
-						</h2>
+						<div className="agnoster-segment agnoster-interests mb-4">
+							<h2 className="font-semibold flex items-center text-sm sm:text-base">
+								<span className="mr-2">$</span>
+								<span>interests</span>
+							</h2>
+						</div>
 						<div className="space-y-1 sm:space-y-2 pl-2 sm:pl-4 border-l-2 border-border text-xs sm:text-sm">
 							<p>☕ I drink a lot of coffee</p>
 							<p>🎸 Rock and metal music enthusiast</p>
@@ -217,10 +226,12 @@ export default function Home() {
 
 					{/* Contact Section */}
 					<section className="border border-border rounded-lg p-3 sm:p-6 bg-card">
-						<h2 className="text-primary text-base sm:text-lg font-semibold mb-3 sm:mb-4 flex items-center">
-							<span className="text-muted-foreground mr-2">$</span>
-							<span className="text-xs sm:text-base">cat contact.json</span>
-						</h2>
+						<div className="agnoster-segment agnoster-contact mb-4">
+							<h2 className="font-semibold flex items-center text-sm sm:text-base">
+								<span className="mr-2">$</span>
+								<span>contact</span>
+							</h2>
+						</div>
 						<div className="pl-2 sm:pl-4 border-l-2 border-border space-y-2 text-xs sm:text-sm">
 							<div className="flex items-center gap-2">
 								<span className="text-muted-foreground">"twitter":</span>
