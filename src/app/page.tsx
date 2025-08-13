@@ -46,11 +46,11 @@ export default function Home() {
 				<div className="mb-6 sm:mb-8 border border-border rounded-lg p-3 sm:p-6 bg-card">
 					<div className="flex items-center gap-4 sm:gap-8">
 						<div className="flex-1 min-w-0">
-							<pre className="text-primary text-[0.35rem] xs:text-[0.5rem] sm:text-xs md:text-sm overflow-x-auto terminal-glow whitespace-pre sm:whitespace-pre-wrap">
+							<pre className="text-primary text-[0.69rem] xs:text-[0.5rem] sm:text-xs md:text-sm overflow-x-auto terminal-glow whitespace-pre sm:whitespace-pre-wrap">
 								{asciiArt}
 							</pre>
 						</div>
-						<div className="hidden xs:flex flex-shrink-0 flex-col items-center justify-center">
+						<div className="hidden md:flex flex-shrink-0 flex-col items-center justify-center">
 							<div className="mb-1">
 								<p className="text-muted-foreground text-xs opacity-75 font-mono">
 									<span className="text-primary">$</span> icat avatar.jpg
@@ -68,13 +68,13 @@ export default function Home() {
 						</div>
 					</div>
 					<div className="mt-3 sm:mt-4 space-y-1 sm:space-y-2">
-						<p className="text-primary font-semibold terminal-glow text-sm sm:text-base">
+						<p className="text-primary font-semibold terminal-glow">
 							Welcome to Genesis Guerrero's Portfolio
 						</p>
-						<p className="text-xs sm:text-sm mb-4">
+						<p className="text-sm pb-4">
 							A quirky code alchemist building playful things in the cloud
 						</p>
-						<p className="text-muted-foreground text-xs sm:text-sm">
+						<p className="text-muted-foreground text-xs">
 							Terminal Whisperer | Automation Addict | Neovim Nerd | Opinionated
 						</p>
 					</div>
@@ -85,13 +85,13 @@ export default function Home() {
 					{/* About Section */}
 					<section className="border border-border rounded-lg p-3 sm:p-6 bg-card">
 						<div className="agnoster-segment agnoster-about mb-4">
-							<h2 className="font-semibold flex items-center text-sm sm:text-base">
+							<h2 className="font-semibold flex items-center">
 								<span className="mr-2">$</span>
 								<span>about</span>
 							</h2>
 						</div>
 						<div className="space-y-2 sm:space-y-3 pl-2 sm:pl-4 border-l-2 border-border">
-							<div className="text-xs sm:text-sm text-muted-foreground space-y-1">
+							<div className="text-muted-foreground space-y-1">
 								<p>
 									<strong className="text-foreground">Name:</strong> Genesis
 									Guerrero Martínez
@@ -109,7 +109,7 @@ export default function Home() {
 									Spanish (native), English, Norwegian (learning)
 								</p>
 							</div>
-							<div className="text-xs sm:text-sm space-y-2">
+							<div className="py-2 space-y-2">
 								<p>
 									A Software Engineer with rock-solid experience in building
 									complex web applications.
@@ -118,12 +118,14 @@ export default function Home() {
 									Since 2014, I've developed many types of web applications and
 									built tools to help businesses grow.
 								</p>
-								<p className="text-accent">
-									NodeJS School Day Speaker | Python Ambassador in Colombia ~
-								</p>
+							</div>
+							<div className="text-sm space-y-2">
 								<p className="text-accent">
 									TUI applications lover | AI Agent Adventurer | Refactor
 									Renegade | Automation Aficionado
+								</p>
+								<p className="text-accent">
+									NodeJS School Day Speaker | Python Ambassador in Colombia
 								</p>
 							</div>
 						</div>
@@ -132,20 +134,26 @@ export default function Home() {
 					{/* Work Section */}
 					<section className="border border-border rounded-lg p-3 sm:p-6 bg-card">
 						<div className="agnoster-segment agnoster-work mb-4">
-							<h2 className="font-semibold flex items-center text-sm sm:text-base">
+							<h2 className="font-semibold flex items-center">
 								<span className="mr-2">$</span>
 								<span>work</span>
 							</h2>
 						</div>
 						<div className="space-y-2 sm:space-y-3 pl-2 sm:pl-4 border-l-2 border-border">
-							<p className="text-primary font-semibold text-sm sm:text-base">
+							<p className="text-primary font-semibold">
 								Currently @ Ventura TRAVEL
 							</p>
-							<p className="text-xs sm:text-sm">
-								Position: Software Engineer | Infrastructure Team Manager
+							<p className="">
+								<strong>Position: </strong>
+								<span className="text-muted-foreground">
+									Software Engineer | Infrastructure Team Manager
+								</span>
 							</p>
-							<p className="text-xs sm:text-sm text-muted-foreground">
-								Experience: 11 years in software development
+							<p className="">
+								<strong>Experience: </strong>
+								<span className="text-muted-foreground">
+									11 years in software development
+								</span>
 							</p>
 						</div>
 					</section>
@@ -153,12 +161,12 @@ export default function Home() {
 					{/* Skills Section */}
 					<section className="border border-border rounded-lg p-3 sm:p-6 bg-card">
 						<div className="agnoster-segment agnoster-skills mb-4">
-							<h2 className="font-semibold flex items-center text-sm sm:text-base">
+							<h2 className="font-semibold flex items-center">
 								<span className="mr-2">$</span>
 								<span>skills</span>
 							</h2>
 						</div>
-						<div className="space-y-3 sm:space-y-4 pl-2 sm:pl-4 border-l-2 border-border text-xs sm:text-sm">
+						<div className="space-y-3 sm:space-y-4 pl-2 sm:pl-4 border-l-2 border-border text-sm">
 							<div>
 								<p className="text-primary font-semibold mb-1 sm:mb-2">
 									Expert:
@@ -195,12 +203,12 @@ export default function Home() {
 					{/* Interests Section */}
 					<section className="border border-border rounded-lg p-3 sm:p-6 bg-card">
 						<div className="agnoster-segment agnoster-interests mb-4">
-							<h2 className="font-semibold flex items-center text-sm sm:text-base">
+							<h2 className="font-semibold flex items-center">
 								<span className="mr-2">$</span>
 								<span>interests</span>
 							</h2>
 						</div>
-						<div className="space-y-1 sm:space-y-2 pl-2 sm:pl-4 border-l-2 border-border text-xs sm:text-sm">
+						<div className="space-y-1 sm:space-y-2 pl-2 sm:pl-4 border-l-2 border-border text-sm">
 							<p>☕ I drink a lot of coffee</p>
 							<p>🎸 Rock and metal music enthusiast</p>
 							<p>🍺 Craft beer lover</p>
@@ -227,12 +235,12 @@ export default function Home() {
 					{/* Contact Section */}
 					<section className="border border-border rounded-lg p-3 sm:p-6 bg-card">
 						<div className="agnoster-segment agnoster-contact mb-4">
-							<h2 className="font-semibold flex items-center text-sm sm:text-base">
+							<h2 className="font-semibold flex items-center">
 								<span className="mr-2">$</span>
 								<span>contact</span>
 							</h2>
 						</div>
-						<div className="pl-2 sm:pl-4 border-l-2 border-border space-y-2 text-xs sm:text-sm">
+						<div className="pl-2 sm:pl-4 border-l-2 border-border space-y-2 text-sm">
 							<div className="flex items-center gap-2">
 								<span className="text-muted-foreground">"twitter":</span>
 								<a
@@ -284,7 +292,7 @@ export default function Home() {
 				{/* Footer */}
 				<footer className="mt-8 sm:mt-12 text-center">
 					<div className="border border-border rounded-lg p-3 sm:p-4 bg-card">
-						<p className="text-muted-foreground text-xs sm:text-sm">
+						<p className="text-muted-foreground text-sm">
 							Terminal Portfolio v1.0.0
 						</p>
 						<div className="mt-2">
